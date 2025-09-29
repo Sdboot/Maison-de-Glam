@@ -114,13 +114,14 @@ if (window.location.pathname.endsWith('product.html')) {
       cartBox.style.padding = '1.2em 1.5em 1em 1.5em';
       cartBox.style.zIndex = '1000';
       cartBox.style.minWidth = '220px';
+      cartBox.innerHTML = '<span style="color:red;font-weight:bold;">Cart loaded!</span><br><b>Empty Cart</b>';
       document.body.appendChild(cartBox);
     }
     if (cart.length === 0) {
-      cartBox.innerHTML = '<b>Empty Cart</b>';
+      cartBox.innerHTML = '<span style="color:red;font-weight:bold;">Cart loaded!</span><br><b>Empty Cart</b>';
       return;
     }
-    cartBox.innerHTML = '<b>Cart</b><ul style="margin:0.5em 0 0.5em 0;padding:0;list-style:none;">' +
+    cartBox.innerHTML = '<span style="color:red;font-weight:bold;">Cart loaded!</span><br><b>Cart</b><ul style="margin:0.5em 0 0.5em 0;padding:0;list-style:none;">' +
       cart.map(item => `<li>${item.name} x ${item.qty} <span style='color:#e75480;font-weight:600'>(₦${item.price*item.qty})</span> <button style='margin-left:8px;font-size:0.9em' onclick="decreaseQty('${item.name}')">-</button> <button style='margin-left:2px;font-size:0.9em' onclick="increaseQty('${item.name}')">+</button> <button style='margin-left:8px;font-size:0.9em' onclick="removeFromCart('${item.name}')">&times;</button></li>`).join('') +
       '</ul>';
   }
